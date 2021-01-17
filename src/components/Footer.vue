@@ -61,16 +61,16 @@
             style="width: 60px;"
           />
           <p>
-            Java Spring
+            Vue
           </p>
           <p>
-            JavaScript Node
+            JavaScript
           </p>
           <p>
-            jQuery
+            Bootstrap
           </p>
           <p>
-            Full-stack
+            Node
           </p>
         </div>
         <!-- Grid column -->
@@ -106,9 +106,9 @@
             class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto"
             style="width: 60px;"
           />
-          <p><i class="fas fa-home mr-3"></i> Mississauga Ontario, CA</p>
-          <p><i class="fas fa-envelope mr-3"></i> Yassin.Altaha@gmail.com</p>
-          <p><i class="fas fa-phone mr-3"></i> +1 647 962 6206</p>
+          <p><i class="fas fa-home mr-3"></i> New York, NY</p>
+          <p><i class="fas fa-envelope mr-3"></i> Email@gmail.com</p>
+          <p><i class="fas fa-phone mr-3"></i> +1 555 555 5555</p>
         </div>
         <!-- Grid column -->
       </div>
