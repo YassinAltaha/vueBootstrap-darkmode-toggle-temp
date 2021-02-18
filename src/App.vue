@@ -1,46 +1,68 @@
 <template>
-  <div id="app" v-bind:class="mode">
-    <div>
-      <b-navbar toggleable="lg" v-bind:type="mode" v-bind:variant="variant">
-        <b-navbar-brand href="#">NavBar</b-navbar-brand>
+  <div id="app" v-bind:class="mainBackground">
+    <b-navbar
+      toggleable="lg"
+      :type="navText"
+      :variant="mainBackground"
+      class="shadow-sm sticky-top nav-addons"
+    >
+      <b-navbar-brand class="" href="#">
+        <ExoLogo />
+      </b-navbar-brand>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item to="/">Home</b-nav-item>
-            <b-nav-item to="/about">About</b-nav-item>
-          </b-navbar-nav>
-          <!-- Center aligned Nav Items -->
-          <b-navbar-nav class="ml-auto">
-            <h4>
-              <b-nav-text>{{ pageTitle }}</b-nav-text>
-            </h4>
-          </b-navbar-nav>
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
-              <template #button-content>
-                <b-avatar v-bind:variant="btnVariant"></b-avatar>
-              </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="custom-nav-hover">
+          <router-link to="/"><b-nav-item to="/">Home</b-nav-item></router-link>
+          <router-link to="/about"
+            ><b-nav-item to="/about">About</b-nav-item></router-link
+          >
+          <router-link to="/projects"
+            ><b-nav-item to="/projects">Project</b-nav-item></router-link
+          >
+          <router-link to="/weather"
+            ><b-nav-item to="/weather">Weather App</b-nav-item></router-link
+          >
+          <router-link to="/login"
+            ><b-nav-item to="/login">Login-Signup</b-nav-item></router-link
+          >
+        </b-navbar-nav>
+        <!-- Center aligned Nav Items -->
 
-            <b-nav-form class="m-auto">
-              <label class="switch" @change="toggleTheme">
-                <input type="checkbox" />
-                <div>
-                  <span>{{ mode }}</span>
-                </div>
-              </label>
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-    <b-container fluid class="main-content">
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item-dropdown class="custom-drop-down" right>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <b-avatar
+                v-bind:variant="btnBackground"
+                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                class="shadow"
+              ></b-avatar>
+            </template>
+            <b-dropdown-item to="/">Home</b-dropdown-item>
+            <b-dropdown-item to="/about">About</b-dropdown-item>
+            <b-dropdown-item to="/projects">Project</b-dropdown-item>
+
+            <b-dropdown-item to="/weather">Weather-App</b-dropdown-item>
+            <b-dropdown-item to="/login">Login-Signup</b-dropdown-item>
+            <b-dropdown-item to="/notFound">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-form class="m-auto">
+            <label class="switch" @change="toggleTheme">
+              <input type="checkbox" />
+              <div>
+                <span>{{ mainBackground | capitalize }}</span>
+              </div>
+            </label>
+          </b-nav-form>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+    <b-container fluid no-gutters class="main-content ">
       <router-view />
     </b-container>
     <footer class="footer">
@@ -51,33 +73,35 @@
 
 <script>
 import Footer from "./components/Footer";
+import ExoLogo from "@/components/ExoLogo";
 export default {
   name: "App",
   components: {
+    ExoLogo,
     Footer,
   },
   created() {
-    this.mode = this.$store.getters.currentMode;
-    this.variant = this.$store.getters.navVariant;
-    this.btnVariant = this.$store.getters.btnVariant;
+    this.$store.watch(() => {
+      this.theme = this.$store.getters.exotheme;
+      this.navBackground = this.theme.navBackground;
+      this.mainBackground = this.theme.mainBackground;
+      this.btnBackground = this.theme.btnBackground;
+      this.navText = this.theme.navText;
+    });
   },
+
   data() {
     return {
-      mode: "",
-      variant: "",
+      theme: {},
+      mainBackground: "",
+      navBackground: "",
+      navText: "",
       pageTitle: "",
     };
   },
   methods: {
     toggleTheme() {
-      this.$store.commit("toggleMode");
-      // console.log(this.$store.getters.currentMode);
-      // console.log(this.$store.getters.btnVariant);
-      // console.log(this.$store.getters.navVariant);
-      this.btnVariant = this.$store.getters.btnVariant;
-      this.mode = this.$store.getters.currentMode;
-      this.variant = this.$store.getters.navVariant;
-      // this.variant = this.variant === "info" ? "success" : "info";
+      this.$store.commit("toggleTheme");
     },
   },
   watch: {
@@ -89,46 +113,179 @@ export default {
       },
     },
   },
+  filters: {
+    capitalize: (value) => {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
+/*
+MAIN THEME CONTROLLER
+*/
 .light {
-  --background-color: #ffffff;
-  --main-text-color: #000000;
-  --footer-background: var(--primary);
+  --white-dark: #fff;
+  --background-color: #e7e7e7;
+  --text-main-color: #000000;
+  --background-secondary-color: #fdfdfd;
+  --text-secondary-color: #3a3a3a;
+  --footer-background: var(--dark-primary);
+  --logo-text: var(--btn-color);
+  /* Logo Colors */
+  --hex-big-color: #cae718;
+  --hex-second-top-color: #20c997;
+  --hex-second-bottom-color: #6f42c1;
+  --hex-thrid-top-color: #2a9fd6;
+  --hex-thrid-bottom-color: #ff8566;
+  /* -------- */
+  /* Nav Buttons */
+  --nav-color: #a972cb;
+  --nav-hover: #{adjust-hue(#a972cb, 45deg)};
+  --nav-background-color: #333b3f;
+  --nav-drop-down-hover: #e5e5e5;
+  --nav-text-hover: #fff;
+  /* --------------------- */
+  /* Chart Colors */
+  --chart-background: #17141d;
+  /* Timeline Colors */
+  --timeline-background: #fff;
+  --timeline-text-header: #1a1918;
+  --timeline-text-content: #3f3c3a;
+  --timeline-info-text: #1d1d1d;
+  --timeline-info-background: #bfbfbf;
+  /* --------------------- */
+  /* Contact me  Colors */
+  --contact-btn-background: #46627f;
+  --contact-btn-highlight: #3d556f;
+  // $contact-btn-background: #46627f;
+
+  --weather-text-highlight: linear-gradient(90deg, #0011ff, #ba2ee5);
 }
 .dark {
-  --background-color: #000000;
-  --main-text-color: #ffffff;
-  --footer-background: var(--dark);
+  --white-dark: #1a1a1a;
+  --background-color: #000;
+  --text-main-color: #ffffff;
+  --background-secondary-color: #878787;
+  --text-secondary-color: #dfdfdf;
+  --footer-background: var(--btn-color);
+  --logo-text: var(--dark-primary);
+  /* Logo Colors */
+  --hex-big-color: #0475a7;
+  --hex-second-top-color: #c92052;
+  --hex-second-bottom-color: #55c142;
+  --hex-thrid-top-color: #d6612a;
+  --hex-thrid-bottom-color: #8666ff;
+  /* -------- */
+  /* Nav Buttons */
+  --nav-color: #a972cb;
+  --nav-hover: #{adjust-hue(#a972cb, 45deg)};
+  --nav-background-color: #333b3f;
+  --nav-drop-down-hover: #505050;
+  --nav-text-hover: #000;
+  /* --------------------- */
+  /* Chart Colors */
+
+  --chart-background: #dfdfdf;
+
+  /* Timeline Colors */
+  --timeline-background: #333c42;
+  --timeline-text-header: #e5e6e7;
+  --timeline-text-content: #c0c3c5;
+  --timeline-info-text: #e2e2e2;
+  --timeline-info-background: #1b1b1b;
+  /* --------------------- */
+  /* Contact me  Colors */
+  --contact-btn-background: #fe9e3b;
+  --contact-btn-highlight: #db9e5e;
+  --weather-text-highlight: linear-gradient(90deg, #55c142, #db9e5e);
 }
+
+/*
+rest of scss
+*/
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  min-width: 100vw;
+  min-width: 375px;
   min-height: 100vh;
   background-color: var(--background-color);
-  color: var(--main-text-color);
+  color: var(--text-main-color);
 }
+
 .main-content {
-  min-height: 80vh;
+  padding: 1.5rem 0px 0px 0px !important;
+  min-height: 100vh;
 }
 .footer {
   margin-top: 2.5rem;
   width: 100%;
-  background-color: var(--footer-background);
 }
+
+.custom-drop-down {
+  .dropdown-menu {
+    border: 3px solid;
+    border-radius: 6px;
+    //border-color: var(--text-secondary-color);
+    border-color: #a972cb;
+    background-color: var(--background-secondary-color);
+    .dropdown-item {
+      //color: var(--main-text-color);
+      color: var(--text-main-color);
+      &:hover {
+        background-color: var(--nav-drop-down-hover);
+      }
+    }
+  }
+}
+
+.custom-nav-hover {
+  margin-left: 3vw;
+  .nav-link {
+    width: 100%;
+    height: 100%;
+    text-decoration: none !important;
+  }
+  .nav-item {
+    background: none;
+    border: 2px solid;
+    border-radius: 6px;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 0.25em 2em;
+    ////
+    color: var(--nav-color);
+    transition: 0.25s;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+
+      border-color: var(--nav-hover);
+      color: #fff;
+    }
+  }
+  .nav-item:hover,
+  .nav-item:focus {
+    box-shadow: inset 0 0 0 4em var(--nav-hover);
+  }
+}
+//Theme Toggler scss
 .switch {
   margin-left: auto;
   --line: #505162;
-  --dot: #f7f8ff;
+  --dot: #9ea0be;
   --circle: #9ea0be;
+  --text: var(--text-main-color);
   --duration: 0.3s;
-  // --text: #222;
-  --text: var(--main-text-color);
+
+  // --text: var(--text-main-color);
   cursor: pointer;
   input {
     display: none;
@@ -160,7 +317,6 @@ export default {
       span {
         padding-left: 56px;
         line-height: 24px;
-        color: var(--text);
         &:before {
           --x: 0;
           --b: var(--circle);

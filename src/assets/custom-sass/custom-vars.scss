@@ -1,0 +1,35 @@
+// Base colors definitions
+
+$exo-green: #00ff15 !default;
+
+$dark-primary: #e6ec00 !default;
+$dark-secondary: #303030 !default;
+$dark-success: #015668 !default;
+$dark-danger: #ff304f !default;
+$dark-info: #0f81c7 !default;
+$dark-warning: #0de2ea !default;
+$dark-light: #e8e8e8 !default;
+$dark-dark: #000000 !default;
+$btn-color: #0075a7 !default;
+$exo-green: $exo-green !default;
+
+// This table defines the theme colors (variant names)
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "btn-color": $btn-color,
+    "exo-green": $exo-green,
+    "dark-primary": $dark-primary,
+    "dark-secondary": $dark-secondary,
+    "dark-success": $dark-success,
+    "dark-danger": $dark-danger,
+    "dark-info": $dark-info,
+    "dark-warning": $dark-warning,
+    "dark-light": $dark-light,
+    "dark-dark": $dark-dark,
+  ),
+  $theme-colors
+);
+
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "node_modules/bootstrap-vue/src/index.scss";

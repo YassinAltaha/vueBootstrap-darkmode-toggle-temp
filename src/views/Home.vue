@@ -1,19 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <b-button pill v-bind:variant="variant">Button</b-button>
-  </div>
+  <b-container fluid>
+    <b-row>
+      <b-col xl="12" lg="5" md="12" sm="12">
+        <div>
+          <Logo />
+        </div>
+      </b-col>
+      <b-col xl="12" lg="5" md="12" sm="12">
+        <HomeInfo />
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HomeInfo from "@/components/HomeInfo.vue";
+import Logo from "@/components/BigLogo";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    HomeInfo,
+    Logo,
   },
   data() {
     return {

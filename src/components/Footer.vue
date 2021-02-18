@@ -1,40 +1,7 @@
 <template>
-  <div class="">
-    <div class="container">
-      <!-- Grid row-->
-      <div class="row d-flex align-items-center">
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-6 text-center text-md-right text-white">
-          <!-- Facebook -->
-          <!-- <a class="fb-ic">
-              <i class="fab fa-facebook-f white-text mr-4"></i>
-            </a>
-            -->
-
-          <!-- Google +-->
-          <a class="gplus-ic" href="mailto: yassin.altaha@gmail.com">
-            <i class="fab fa-google-plus-g white-text mr-4"></i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic" href="https://www.linkedin.com/in/yassin-altaha/">
-            <i class="fab fa-linkedin-in white-text mr-4"></i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic" href="https://www.instagram.com/exospheric3/?hl=en">
-            <i class="fab fa-instagram mr-4"></i>
-          </a>
-          <!-- Github-->
-          <a class="git-ic" href="https://github.com/exospher3">
-            <i class="fab fa-github "></i>
-          </a>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row-->
-    </div>
-
+  <div class="footer-text shadow-footer">
     <!-- Footer Links -->
-    <div class="container text-center text-md-left mt-5">
+    <div class="container text-center text-md-left pt-5">
       <!-- Grid row -->
       <div class="row mt-3">
         <!-- Grid column -->
@@ -45,7 +12,7 @@
             class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto"
             style="width: 60px;"
           />
-          <p>
+          <p class="footer-secondary">
             A web designer walks into a bar, but immediately leaves in disgust
             upon noticing the tables layout.
           </p>
@@ -57,21 +24,23 @@
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">Skills</h6>
           <hr
-            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto"
+            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto "
             style="width: 60px;"
           />
-          <p>
-            Vue
-          </p>
-          <p>
-            JavaScript
-          </p>
-          <p>
-            Bootstrap
-          </p>
-          <p>
-            Node
-          </p>
+          <div class="footer-secondary">
+            <p>
+              Vue
+            </p>
+            <p>
+              JavaScript
+            </p>
+            <p>
+              Bootstrap
+            </p>
+            <p>
+              Node
+            </p>
+          </div>
         </div>
         <!-- Grid column -->
 
@@ -80,21 +49,23 @@
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">Hobbies</h6>
           <hr
-            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto"
+            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto footer-secondary"
             style="width: 60px;"
           />
-          <p>
-            Hiking
-          </p>
-          <p>
-            Basketball
-          </p>
-          <p>
-            Drawing
-          </p>
-          <p>
-            Photography
-          </p>
+          <div class="footer-secondary">
+            <p>
+              Hiking
+            </p>
+            <p>
+              Basketball
+            </p>
+            <p>
+              Drawing
+            </p>
+            <p>
+              Photography
+            </p>
+          </div>
         </div>
         <!-- Grid column -->
 
@@ -103,12 +74,14 @@
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">Contact</h6>
           <hr
-            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto"
+            class="text-light accent-2 mb-4 mt-0 d-inline-block mx-auto footer-secondary"
             style="width: 60px;"
           />
-          <p><i class="fas fa-home mr-3"></i> New York, NY</p>
-          <p><i class="fas fa-envelope mr-3"></i> Email@gmail.com</p>
-          <p><i class="fas fa-phone mr-3"></i> +1 555 555 5555</p>
+          <div class="footer-secondary">
+            <p><i class="fas fa-home mr-3"></i> Mississauga, ON, Canada</p>
+            <p><i class="fas fa-envelope mr-3"></i> Yassin.altaha@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +1 647 962 6206</p>
+          </div>
         </div>
         <!-- Grid column -->
       </div>
@@ -123,4 +96,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.footer-text {
+  color: var(--main-text-color);
+  background-color: var(--footer-background);
+}
+.footer-secondary {
+  color: var(--text-secondary-color);
+}
+</style>
