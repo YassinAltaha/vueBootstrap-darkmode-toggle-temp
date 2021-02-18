@@ -1,6 +1,6 @@
 # vue-togglable-bootstrap
 
-Goal: Create an easy way to change Bootstrap colors at run for Dark-Mode funcationalty (without using Vuetify or extra packages)
+Goal: Create an easy way to change Bootstrap porfolio with colors at run for Dark-Mode funcationalty (without using Vuetify or extra packages)
 
 Method:
 1) Using Vuex to handle the bootstrap colors change / variant changes and passing the variables through out the application.
