@@ -14,7 +14,7 @@
             practice the framework.
             <br />
             <br />
-            Took the opertunity to create my portfolio using Vue.js.
+            Took the opportunity to create my portfolio using Vue.js.
           </p>
           <div class="timeline-content-info">
             <span class="cd-date">June 2020 - Present </span>
@@ -27,10 +27,11 @@
       <div class="cd-timeline-block">
         <div class="cd-timeline-img cd-picture"></div>
         <div class="cd-timeline-content">
-          <h2>Graduted from Sheridan College</h2>
+          <h2>Graduated from Sheridan College</h2>
           <p>
-            Graduted From Computer System Analysts 3 year program, with an award
-            of excellence for achiving 2nd place in the capstone compitition.
+            Graduated from Computer System Analysts 3-year program, with an
+            award of excellence for achieving 2nd place in the capstone
+            competition.
           </p>
           <div class="timeline-content-info">
             <span class="cd-date"> January 2017 - April 2020</span>

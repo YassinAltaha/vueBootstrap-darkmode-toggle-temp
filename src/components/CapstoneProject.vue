@@ -17,7 +17,7 @@
             Automated Sheridan’s capstone program duties, by designing and
             developing a one stop online portal.
           </p>
-          <h4>Responsiblities</h4>
+          <h4>Responsibilities</h4>
           <p>
             Setting up Spring Security to handle role-based authentication and
             authorization. configuring hibernate to connect to MySQL server, and
@@ -28,7 +28,7 @@
             using nice prebuilt components.
           </p>
 
-          <h4>Techonology</h4>
+          <h4>Technology</h4>
           <li>MySQL | Tomcat | LinuxOS</li>
           <li>Hibernate | Spring Security | Spring MVC | Maven</li>
           <li>Theymleaf | Bootstrap | Html5 | CSS</li>
@@ -58,6 +58,7 @@ export default {};
 .video {
   border-radius: 5%;
 }
+
 .info-colum {
   padding-top: 1.5rem;
   margin: auto 0px;
